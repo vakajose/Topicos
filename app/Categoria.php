@@ -8,7 +8,7 @@ class Categoria extends Model
 {
    protected $table ="categoria";
    protected $fillable = [
-        'nombre'
+        'nombre','icon','color','estado'
     ];
 
     public function reclamos()
