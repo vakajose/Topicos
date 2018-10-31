@@ -14,4 +14,10 @@ class Reclamo extends Model
     	 return $this->hasMany('App\Foto');
 
     }
+    public function categoria(){
+    	return $this->belongsTo('App\Categoria');
+    }
+    public function zona(){
+    	return $this->belongsTo('App\Zona');
+    }
 }

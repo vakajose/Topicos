@@ -23,3 +23,10 @@ Route::get('getcategorias','WebServiceController@getCategorias');
 Route::get('getcategoriacode','WebServiceController@getcategoriacode');
 Route::post('enviarreclamo','WebServiceController@crearReclamo');
 
+Route::resource('categoria', 'CategoriaController')->parameters([
+    'categoria' => 'categoria'
+]);
+Route::resource('reclamo', 'ReclamoController')->parameters([
+    'reclamo' => 'reclamo'
+]);
+Route::name('estadisticas.show')->get('estadisticas', 'EstadisticaController@show');
