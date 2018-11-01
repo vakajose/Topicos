@@ -27,6 +27,7 @@ $(function () {
           mapTypeId: 'terrain'
         });
         //iteramos sobre los reclamos para poblar el mapa
+        console.log(reclamos);
         for (var i = 0; i <reclamos.length ; i++) {
           $reclamo = reclamos[i];
           var marker = {lat: parseFloat($reclamo.latitud), lng: parseFloat($reclamo.longitud)};
@@ -52,7 +53,7 @@ $(function () {
           position: location,
           map: map,
           label: $reclamo.id.toString(),
-          title: $reclamo.descripcion
+          title: $reclamo.descripcion,
         });
         markers.push(marker);
         
@@ -60,18 +61,7 @@ $(function () {
           infowindow.open(marker.get('map'), marker);
         });
       }
-      // //añade la ventana de informacion
-      // function addInfoWindow(marker, infostring) {
-
-      //   var infowindow = new google.maps.InfoWindow({
-      //     content: infostring
-      //   });
-
-      //   marker.addListener('click', function() {
-      //     infowindow.open(marker.get('map'), marker);
-      //   });
-      // }
-
+    
       function getInfoString(reclamo) {
         var infostring = reclamo.descripcion;
         return infostring;

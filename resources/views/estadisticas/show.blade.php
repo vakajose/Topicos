@@ -20,10 +20,7 @@
 			</div>
 			<div class="box-body">
 				<div class="row">
-					
-				</div>
-				<div class="row">
-					<canvas id="pieChart" style="height:250px"></canvas>
+					<canvas id="pieChart" height="260px" "></canvas>
 				</div>
 			</div>
 		</div>
@@ -37,7 +34,11 @@
             		</button>
           		</div>	
 			</div>
-			<div class="box-body"></div>
+			<div class="box-body">
+				<div class="row">
+					<canvas id="lineChart" height="260px" "></canvas>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -45,5 +46,10 @@
 @stop
 
 @section('js')
+
+	<script>var dataPie = @json($dataPie);
+			var dataLine = @json($dataLine);
+	</script>
 	<script src="{{ asset('js/estadisticas.js') }}"></script>
+
 @stop

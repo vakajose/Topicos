@@ -17,7 +17,7 @@ class ReclamoZonaSeeder extends Seeder
         Zona::create(['nombre' => 'Zona 2']);
         Zona::create(['nombre' => 'Zona 3']);
 
-        factory(App\Reclamo::class, 12)->create();
+        factory(App\Reclamo::class, 50)->create();
 
     }
 }

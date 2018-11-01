@@ -14,11 +14,12 @@ $factory->define(App\Reclamo::class, function (Faker $faker) {
 	$categoria = Categoria::pluck('id')->toArray();
 
     return [
-        'titulo' =>$faker->title,
+        'titulo' =>$faker->realText($maxNbChars = 30, $indexSize = 2),
         'descripcion' => $faker->text($maxNbChars = 200),
         'latitud' => $faker->randomElement($latitud),
         'longitud' => $faker->randomElement($longitud),
         'votos' => $faker->randomDigit,
+        'fecha' => $faker->dateTimeBetween($startDate = '-10 days', $endDate = 'now', $timezone = 'America/La_Paz'),
         'estado' => $faker->randomElement(['En Proceso','Recibido','Solucionado']),
         'user_id' => $faker->randomElement($user),
         'zona_id' => $faker->randomElement($zona),
