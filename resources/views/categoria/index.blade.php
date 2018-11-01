@@ -2,9 +2,7 @@
 
 
 @section('title', 'Topicos | Categorias')
-@section('css')
 
-@stop
 @section('content_header')
     <h1>Listado de Categorias</h1>
 @stop
