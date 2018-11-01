@@ -11,6 +11,10 @@ $(function () {
       'info'        : true,
       'autoWidth'   : false
     });
+    $('#color').colorpicker({ 
+      inline:true
+    });
+    $('#icon').iconpicker();
   });
 
    

@@ -1,7 +1,10 @@
 @extends('adminlte::page')
 
-@section('title', 'Topicos | Categorias')
 
+@section('title', 'Topicos | Categorias')
+@section('css')
+
+@stop
 @section('content_header')
     <h1>Listado de Categorias</h1>
 @stop
@@ -20,7 +23,9 @@
                 <div class="form-group">
                   
                     <input type="text" class="form-control" name="nombre" placeholder="Nombre de la categoria">
-                  
+                    <input type="text" name="color" id="color" class="form-control">
+                    <input type="text" name="icon" id="icon" class="form-control">
+                    <select class="form-control" name="estado" ><option value="Activo">Activo</option><option value="Inactivo">Inactivo</option></select> 
                 </div>
                 <div class="form-group">
                 	<button type="submit" class="btn btn-info pull-left">Guardar</button>
@@ -140,5 +145,11 @@
           	});
         });
     </script>
-	
+	<script src="{{ asset('vendor/bootstrap-colorpicker-2.5.2/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+  <script src="{{ asset('js/reclamoMap.js') }}"></script>
+<script>
+    $(function() {
+        $('#color').colorpicker();
+    });
+</script>
 @stop
