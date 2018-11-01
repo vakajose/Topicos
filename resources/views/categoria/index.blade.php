@@ -2,7 +2,11 @@
 
 
 @section('title', 'Topicos | Categorias')
-
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/bootstrap-colorpicker-2.5.2/dist/css/bootstrap-colorpicker.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/fontawesome-iconpicker-3.0.0/dist/css/fontawesome-iconpicker.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('vendor/fontawesome-free-5.4.2-web/css/all.min.css')}}">
+@stop
 @section('content_header')
     <h1>Listado de Categorias</h1>
 @stop
@@ -20,9 +24,10 @@
               <div class="box-body">
                 <div class="form-group">
                   
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre de la categoria">
-                    <input type="text" name="color" id="color" class="form-control">
-                    <input type="text" name="icon" id="icon" class="form-control">
+                    <input type="text" class="form-control" name="nombre" placeholder="Nombre de la categoria" autocomplete="off">
+                <!--    <input type="text" name="color" id="color" class="form-control"> -->
+                    <input id="color" type="text" class="form-control" value="#5367ce" name="color" autocomplete="off" />
+                    <input type="text" name="icon" id="icon" class="form-control" autocomplete="off">
                     <select class="form-control" name="estado" ><option value="Activo">Activo</option><option value="Inactivo">Inactivo</option></select> 
                 </div>
                 <div class="form-group">
@@ -31,7 +36,7 @@
               </div>
               <!-- /.box-body -->
             </form>
-            
+           
         </div>
     	<div class="box box-success">
             <div class="box-header">
@@ -43,6 +48,7 @@
               	<thead>
                 <tr>
                   <th style="width: 10px">#</th>
+                  <th style="width: 20px">i</th>                  
                   <th>Nombre</th>
                   <th>Estado</th>
                   <th style="width: 160px">Opciones</th>
@@ -53,9 +59,10 @@
                 	@foreach ($categorias as $categoria)
                   		<tr>
                   			<td>{{ $categoria->id }}</td>
+                        <td><i class="fas fa-{{$categoria->icon}}"></i></td>
                   			<td>{{ $categoria->nombre }}</td>
-                  			<td>Sin estado</td>
-                  			<td><button class="edit-modal btn btn-sm btn-primary" data-id="{{$categoria->id}}" data-nombre="{{$categoria->nombre}}" > <i class="fa fa-pencil"></i></button>
+                  			<td>{{$categoria->estado}}</td>
+                  			<td><button class="edit-modal btn btn-sm btn-primary" data-id="{{$categoria->id}}" data-nombre="{{$categoria->nombre}}" > <i class="fas fa-edit"></i></button>
                   				<form action="{{ route('categoria.destroy',['categoria'=>$categoria->id]) }}" method="POST" class="inline">
                   					{{ csrf_field() }}
                   					{{ method_field('DELETE') }}
@@ -82,6 +89,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal" role="form">
+                      {{csrf_field()}}
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="id">ID:</label>
                             <div class="col-sm-10">
@@ -133,7 +141,7 @@
         });
         $('.modal-footer').on('click', '.edit', function() {
             $.ajax({
-                type: 'GET',
+                type: 'PUT',
                 url: 'categoria/' + id,
                 data: {
                     '_token': $('input[name=_token]').val(),
@@ -144,10 +152,13 @@
         });
     </script>
 	<script src="{{ asset('vendor/bootstrap-colorpicker-2.5.2/dist/js/bootstrap-colorpicker.min.js') }}"></script>
+  <script src="{{asset('vendor/fontawesome-iconpicker-3.0.0/dist/js/fontawesome-iconpicker.min.js')}}"></script>
   <script src="{{ asset('js/reclamoMap.js') }}"></script>
-<script>
-    $(function() {
-        $('#color').colorpicker();
-    });
-</script>
+   <script>
+              $(function(){
+             $('#color').colorpicker({ 
+            });
+            $('#icon').iconpicker();
+              });
+    </script>
 @stop

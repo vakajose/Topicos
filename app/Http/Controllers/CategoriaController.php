@@ -74,8 +74,8 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $categoria::find($id)->update($request->only('nombre'));
+        
+        $categoria = Categoria::find($id)->update($request->only('nombre'));
         return response()->json($categoria);
     }
 

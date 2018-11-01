@@ -14,43 +14,43 @@ class CategoriaTableSeeder extends Seeder
         Categoria::create([
         	'nombre' => 'Calles',
         	'color' => '#41d352',
-        	'icon' => 'fa-map',
+        	'icon' => 'road',
         	'estado' => 'Activo'
         ]);
         Categoria::create([
         	'nombre' => 'Alumbrado',
         	'color' => '#c68b53',
-        	'icon' => 'fa-odnoklassniki',
+        	'icon' => 'lightbulb',
         	'estado' => 'Activo'
         ]);
         Categoria::create([
         	'nombre' => 'Saneamiento',
         	'color' => '#c65353',
-        	'icon' => 'fa-wikipedia-w',
+        	'icon' => 'broom',
         	'estado' => 'Activo'
         ]);
         Categoria::create([
         	'nombre' => 'Parques y jardines',
         	'color' => '#53c6c2',
-        	'icon' => 'fa-child',
+        	'icon' => 'leaf',
         	'estado' => 'Activo'
         ]);
         Categoria::create([
         	'nombre' => 'Alcantarillado',
         	'color' => '#a082b2',
-        	'icon' => 'fa-car',
+        	'icon' => 'tint',
         	'estado' => 'Activo'
         ]);
         Categoria::create([
         	'nombre' => 'Infraestructura',
         	'color' => '#eaea00',
-        	'icon' => 'fa-building',
+        	'icon' => 'building',
         	'estado' => 'Activo'
         ]);
         Categoria::create([
         	'nombre' => 'Otros',
         	'color' => '#2a33e0',
-        	'icon' => 'fa-camera',
+        	'icon' => 'question-circle',
         	'estado' => 'Activo'
         ]);
 
