@@ -20,12 +20,31 @@ class WebServiceController extends Controller
         }
         dd($code);
     }
+    public function gethistorial(){
+        $historialR = array();
+        $historial = DB::table('reclamo')->where('user_id','2')->select('titulo','descripcion')->get();
+        return json_encode($historial);
+    }
+    public function getHistorialReclamo(){
+        $historialR = array();
+        $historial = DB::table('reclamo')->where('user_id','2')->select('*')->get();
+        foreach ($historial as $his) {
+            $fotoA = array();
+            $fotos = DB::table('foto')->where('reclamo_id',$his->id)->select('path')->get();
+            foreach ($fotos as $foto) {
+                $fotoA[] = $foto->path;
+            }
+            $his->fotos = $fotoA;
+            $historialR[] = $his;
+        }
+        return json_encode($historialR);
 
-    	
+    }
     public function crearReclamo(){
         return json_encode(['status' => $this->enviarreclamo($_POST)]);
     }
     public function enviarreclamo(){
+    //    return 200;
         $reclamo = $this->crearReclamoI($_POST['titulo'],$_POST['descripcion'],$_POST['latitud'],$_POST['longitud'],'0','Recibido','2','1',$_POST['categoria_id']);
         $this->crearFoto($reclamo->id,$_POST['image1']);
         $this->crearFoto($reclamo->id,$_POST['image2']);
