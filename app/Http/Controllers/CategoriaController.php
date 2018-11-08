@@ -76,7 +76,7 @@ class CategoriaController extends Controller
     {
         
         $categoria = Categoria::find($id)->update($request->only('nombre'));
-        return response()->json($categoria);
+        return redirect()->route('categoria.index');
     }
 
     /**

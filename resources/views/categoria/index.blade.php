@@ -12,7 +12,9 @@
 @stop
 
 @section('content')
-    <div class="container-fluid">
+<div class="row">
+  
+    <div class="container">
     	<div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">Crear Categoria</h3>
@@ -47,8 +49,8 @@
               <table class="table table-condensed">
               	<thead>
                 <tr>
-                  <th style="width: 10px">#</th>
-                  <th style="width: 20px">i</th>                  
+                  
+                  <th style="width: 20px"></th>                  
                   <th>Nombre</th>
                   <th>Estado</th>
                   <th style="width: 160px">Opciones</th>
@@ -58,8 +60,8 @@
 
                 	@foreach ($categorias as $categoria)
                   		<tr>
-                  			<td>{{ $categoria->id }}</td>
-                        <td><i class="fas fa-{{$categoria->icon}}"></i></td>
+                  		
+                        <td><i class="{{$categoria->icon}}"></i></td>
                   			<td>{{ $categoria->nombre }}</td>
                   			<td>{{$categoria->estado}}</td>
                   			<td><button class="edit-modal btn btn-sm btn-primary" data-id="{{$categoria->id}}" data-nombre="{{$categoria->nombre}}" > <i class="fas fa-edit"></i></button>
@@ -78,7 +80,8 @@
         </div>
         <!-- /.box -->
     </div>
-    
+ </div>
+   
     <!-- Modal form to edit a form -->
     <div id="editModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -88,7 +91,7 @@
                     <h4 class="modal-title"></h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" action="{{ route('categoria.index') }}">
                       {{csrf_field()}}
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="id">ID:</label>
@@ -106,7 +109,7 @@
                         
                     </form>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary edit" data-dismiss="modal">
+                        <button type="button" class="btn btn-primary edit" data-dismiss="modal" onclick="{{ route('categoria.index') }}">
                             <span class='glyphicon glyphicon-check'></span> Editar
                         </button>
                         <button type="button" class="btn btn-warning" data-dismiss="modal">
